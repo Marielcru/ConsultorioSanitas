@@ -4,7 +4,7 @@
  */
 package Servlet;
 
-import Conexion.ValidacionUsser;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -35,7 +35,11 @@ public class LogueoUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            response.sendRedirect ("Administrador.html");
+            
+          
+            
+            
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -46,6 +50,7 @@ public class LogueoUsuario extends HttpServlet {
             out.println("<h1>Bienvenido" + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+            
         }
     }
 
@@ -69,13 +74,13 @@ public class LogueoUsuario extends HttpServlet {
         
         salida.println("<html><body>");
         
-        salida.println("Bienvenido"+ request.getParameter("usser"));
+        salida.println("Bienvenido"+ request.getParameter("Usuario"+"Password"));
         
         salida.println("<br><br>");
         
         salida.println("</body></html>");
         
-        ValidacionUsser usuario=new ValidacionUsser();
+ 
         
     }
 
