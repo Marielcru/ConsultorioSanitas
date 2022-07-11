@@ -39,7 +39,7 @@ public class Servelet extends HttpServlet {
             out.println("<title>Bienvenido</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Bienvenido " + request.getContextPath() + "</h1>");
+            out.println("<h1>Bienvenido Usuario " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -97,7 +97,7 @@ public class Servelet extends HttpServlet {
 //        salida.println("");
 //        salida.println("");
 //        salida.println("");
-//        salida.println("nombre usurario");
+//        salida.println("nombre usuario");
     }   
 
     /**
