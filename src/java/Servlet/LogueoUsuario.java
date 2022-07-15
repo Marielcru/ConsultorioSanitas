@@ -38,7 +38,7 @@ public class LogueoUsuario extends HttpServlet {
             
           
             
-            
+            response.sendRedirect ("Administrador.html");
             
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -74,7 +74,7 @@ public class LogueoUsuario extends HttpServlet {
         
         salida.println("<html><body>");
         
-        salida.println("Bienvenido"+ request.getParameter("Usuario"+"Password"));
+        salida.println("Bienvenido"+ request.getParameter(""));
         
         salida.println("<br><br>");
         
