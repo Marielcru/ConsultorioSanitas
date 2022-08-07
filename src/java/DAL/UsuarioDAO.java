@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,12 +17,22 @@ public class UsuarioDAO {
     public UsuarioDAO(){
         
     }
-    
-    
+//public Connection conectar(){
+//            /*metodo*/
+//            Connection cn=null; 
+//            
+//        try {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            cn=DriverManager.getConnection(connectionUrl);
+//            System.out.println("Conectado.");
+//        } catch (SQLException | ClassNotFoundException ex) {
+//            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+//        }    
+//    
     public boolean findById(int id) {
-        try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;database=Clinca;user=NETZUKO\\MARCOS;password=");) {
+        try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;database=Clinica;user=NETZUKO\\MARCOS;password=");) {
             Statement miStatement=miConexion.createStatement();
-            ResultSet miResultSet=miStatement.executeQuery("select usserName from Usuarios");
+            ResultSet miResultSet=miStatement.executeQuery("select idUsuario from Usuarios");
 
             while(miResultSet.next()){
                 System.out.println(miResultSet.getString(""));
@@ -57,4 +69,25 @@ public class UsuarioDAO {
         return true;
     } 
 */
+
+    private static class conexion {
+
+        public conexion() {
+        }
+       
+        public Connection conectar(String connectionUrl) throws SQLException{
+            /*metodo*/
+            Connection cn=null; 
+            
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            cn=DriverManager.getConnection(connectionUrl);
+            System.out.println("Conectado.");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            return null;
+    
             }
+    }
+}
