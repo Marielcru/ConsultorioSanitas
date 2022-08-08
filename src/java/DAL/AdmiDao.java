@@ -32,7 +32,7 @@ public class AdmiDao {
     public boolean findById(int id) {
         try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;database=Clinica;user=NETZUKO\\MARCOS;password=");) {
             Statement miStatement=miConexion.createStatement();
-            ResultSet miResultSet=miStatement.executeQuery("select idUsuario from Usuarios");
+            ResultSet miResultSet=miStatement.executeQuery("select idUsuario from Usuarios contraseña");
 
             while(miResultSet.next()){
                 System.out.println(miResultSet.getString(""));
@@ -41,7 +41,7 @@ public class AdmiDao {
         }
         // Handle any errors that may have occurred.
         catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         // conexion
         
