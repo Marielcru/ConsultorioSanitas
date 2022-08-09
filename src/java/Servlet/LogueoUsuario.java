@@ -13,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import BLL.UsuarioBL;
+import Models.Usuario;
 
 /**
  *
@@ -67,7 +69,6 @@ public class LogueoUsuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        processRequest(request, response);
        
-         
        response.setContentType("/html"); 
        
        PrintWriter salida=response.getWriter();
@@ -92,9 +93,12 @@ public class LogueoUsuario extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    
+        throws ServletException, IOException {
       processRequest(request, response);
       
        String usuario=request.getParameter("usu");
@@ -102,6 +106,17 @@ public class LogueoUsuario extends HttpServlet {
         
         String password=request.getParameter("Pass");
         out.print(password); 
+        Usuario usu = new UsuarioBL().login(usuario, password);
+        if (usu != null){
+            //Esta OK
+            response.sendRedirect (new UsuarioBL().getPage(usuario));
+                
+        }
+        else
+        {
+            // No esta OK
+        }
+        
         
          out.println("<html>");
          out.println("<head></head>");         
