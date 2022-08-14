@@ -54,7 +54,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
     }
 
     private Usuario convertir(ResultSet rs) throws SQLException {
-        String rol = rs.getString(ROL);
+        String rol = rs.getString(ROL); //averigua el rol
         String name = rs.getString(USERNAME);
         String contrasenia = rs.getString(PASSWORD);
         Usuario usuario = new Usuario(rol, name, contrasenia);
@@ -180,11 +180,12 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         
         PreparedStatement stat = null;
         ResultSet rs = null;
-        Usuario u = null;
+        //Usuario u = null;
         try {
             stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "' AND password = '" + pass + "'");
             rs = stat.executeQuery();
-            if (rs.next()) {
+            boolean cant=rs.last();
+            if (cant) {
                 u = convertir(rs);
             } else {
                 // no se valido el usuario
