@@ -27,6 +27,10 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         this.con = con;
     }
 
+    public UsuarioDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public void insertar(Usuario t) throws DAOException {
         PreparedStatement stat = null;
@@ -54,10 +58,10 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
     }
 
     private Usuario convertir(ResultSet rs) throws SQLException {
-        String rol = rs.getString(ROL); //averigua el rol
-        String name = rs.getString(USERNAME);
-        String contrasenia = rs.getString(PASSWORD);
-        Usuario usuario = new Usuario(rol, name, contrasenia);
+        String rol = rs.getString(ROL); //averigua el tipo de rol
+        String usserName = rs.getString(USERNAME);
+        String password = rs.getString(PASSWORD);
+        Usuario usuario = new Usuario(rol, usserName, password);
         usuario.setId(rs.getInt(ID));
         return usuario;
     }
@@ -176,20 +180,39 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         return u;
     }
 
-    public Usuario validarUsuario(String user, String pass) {
+    public Usuario validarUsuario(String user, String pass) throws DAOException {
         
         PreparedStatement stat = null;
         ResultSet rs = null;
-        //Usuario u = null;
+        Usuario u = null;
+        List<Usuario> listUsuarios = obtenerTodos();
+        for(Usuario usuario: listUsuarios){
+            if(usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)){
+                u = usuario;
+            }
+        }
+        
         try {
             stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "' AND password = '" + pass + "'");
             rs = stat.executeQuery();
-            boolean cant=rs.last();
-            if (cant) {
-                u = convertir(rs);
-            } else {
-                // no se valido el usuario
-            }
+           switch(ROL){
+               case 1: rs.ROL =10;//administrador
+                   break;
+               case 2: rs.ROL =7 //medico
+                   break;
+               case 3: rs.ROL =8// paciente
+                   break; 
+                      //hay que acegurarnos de que entre en la base de datos                             
+                                  
+           }
+           
+        }
+ 
+//            if () {
+//                u = convertir(rs);
+//            } else {
+//                // no se valido el usuario
+//            }
         } catch (SQLException ex) {
             // Hubo un error
         } finally {
@@ -205,7 +228,8 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
                     stat.close();
                 } catch (SQLException ex) {
                     //
-                }
+    return u;            
+    }
             }
         
     
