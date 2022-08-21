@@ -71,7 +71,13 @@ public class Sadministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+    
+        
+        
         processRequest(request, response);
+        
+        
     }
 
     /**
@@ -84,4 +90,7 @@ public class Sadministrador extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+
+        
 }

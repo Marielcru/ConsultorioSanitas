@@ -2,7 +2,7 @@ package Models;
 
 public class Usuario {
   
-    private Integer id= 0;
+    private int id;
     private String rol=null;
     private String name=null;
     private String contrasenia=null;
@@ -13,11 +13,11 @@ public class Usuario {
         this.contrasenia=contrasenia;
     }
     
-    public Integer getId(){
+    public int getId(){
         return id;
     }
     
-    public void setId(Integer id){
+    public void setId(int id){
         this.id=id;
     }
     
@@ -43,5 +43,10 @@ public class Usuario {
     
     public void setContrasenia(String contrasenia){
         this.contrasenia=contrasenia;
+    }
+    
+    @Override
+    public String toString(){
+        return this.name;
     }
 } 
