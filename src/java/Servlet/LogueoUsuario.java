@@ -37,9 +37,6 @@ public class LogueoUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            
-          
-            
             response.sendRedirect ("Administrador.html");
             
             /* TODO output your page here. You may use following sample code. */
