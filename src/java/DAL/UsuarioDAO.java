@@ -1,12 +1,14 @@
 package DAL;
 
 import Models.Usuario;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import static jdk.incubator.vector.VectorOperators.ROL;
 
 public class UsuarioDAO implements DAO<Usuario, Integer> {
     
@@ -193,27 +195,30 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
         }
         
         try {
-            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "' AND password = '" + pass + "'");
+            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "'password = '" + pass + "'AND Rol" + Rol);
             rs = stat.executeQuery();
-           switch(ROL){
-               case 1: rs.ROL =10;//administrador
+           switch(Rol){
+               case 1: Rol =10;//administrador
+               response.sendRedirect ("Administrador.html");
                    break;
-               case 2: rs.ROL =7 //medico
+               case 2: Rol =7 //medico
+                       response.sendRedirect ("Medico.html");
                    break;
-               case 3: rs.ROL =8// paciente
+               case 3: Rol =8// paciente
+                       response.sendRedirect ("Paciente.html");
                    break; 
                       //hay que acegurarnos de que entre en la base de datos                             
                                   
            }
            
-        }
+        
  
 //            if () {
 //                u = convertir(rs);
 //            } else {
 //                // no se valido el usuario
 //            }
-        } catch (SQLException ex) {
+            } catch (SQLException ex) {
             // Hubo un error
         } finally {
             if (rs != null) {
