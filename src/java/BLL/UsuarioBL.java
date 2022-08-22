@@ -12,7 +12,7 @@ import Models.Usuario;
 //package BLL;
 //
 //import DAL.UsuarioDAO;
-//
+//logica de negocios lo que tendria que hacer el sistema XD
 ///**
 // *
 // * @author Nadia
@@ -22,7 +22,7 @@ public class UsuarioBL {
     public UsuarioBL(){}
     
     public Usuario login(String user, String pass) throws DAOException {
-        UsuarioDAO dao = new UsuarioDAO(SQLConexion.getInstance().getConnection());
+        UsuarioDAO dao = new UsuarioDAO(SQLConexion.getInstance().getConnection()); //envia la conexion 
         Usuario u = dao.validarUsuario(user, pass);
         return u;
     }
@@ -32,3 +32,4 @@ public class UsuarioBL {
     }
     
 }
+//constructores se llaman igual que la clase. pero no devuelven nada.... los metodos visibilidad+devolucion+nombre clase

@@ -8,23 +8,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static jdk.incubator.vector.VectorOperators.ROL;
 
-public class UsuarioDAO implements DAO<Usuario, Integer> {
-    
+public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key tipo de datos>
+
     final String ID = "IdUsuario";
     final String USERNAME = "Ussername";
     final String PASSWORD = "Password";
     final String ROL = "Rol";
 
-    final String INSERT = "INSERT INTO Usuario("+ID+","+ROL+","+USERNAME+","+PASSWORD+") VALUES(?,?,?,?)";
+    final String INSERT = "INSERT INTO Usuario(" + ID + "," + ROL + "," + USERNAME + "," + PASSWORD + ") VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE Usuario SET Rol=?,Name=?,Contraseña=? WHERE IdUsuario=?";
     final String DELETE = "DELETE FROM Usuario WHERE IdUsuario= ?";
     final String GETALL = "SELECT IdUsuario,Rol,ussername,password FROM Usuarios";
     final String GETONE = "SELECT IdUsuario,Rol,Name,Contraseña FROM Usuario WHERE IdUsuario=?";
 
     Connection con;
-
+    
     public UsuarioDAO(Connection con) {
         this.con = con;
     }
@@ -71,6 +70,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
     @Override
     public void modificar(Usuario t) throws DAOException {
         PreparedStatement stat = null;
+        //deberia modificar el usuario, rol y contraseña de la base de datos
         try {
             stat = con.prepareStatement(UPDATE);
             stat.setInt(1, t.getId());
@@ -183,42 +183,27 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
     }
 
     public Usuario validarUsuario(String user, String pass) throws DAOException {
-        
+
         PreparedStatement stat = null;
         ResultSet rs = null;
         Usuario u = null;
         List<Usuario> listUsuarios = obtenerTodos();
-        for(Usuario usuario: listUsuarios){
-            if(usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)){
+        for (Usuario usuario : listUsuarios) {
+            if (usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)) {
                 u = usuario;
             }
         }
-        
+
         try {
-            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "'password = '" + pass + "'AND Rol" + Rol);
+            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "'password = '" + pass);
             rs = stat.executeQuery();
-           switch(Rol){
-               case 1: Rol =10;//administrador
-               response.sendRedirect ("Administrador.html");
-                   break;
-               case 2: Rol =7 //medico
-                       response.sendRedirect ("Medico.html");
-                   break;
-               case 3: Rol =8// paciente
-                       response.sendRedirect ("Paciente.html");
-                   break; 
-                      //hay que acegurarnos de que entre en la base de datos                             
-                                  
-           }
-           
-        
- 
+            
 //            if () {
 //                u = convertir(rs);
 //            } else {
 //                // no se valido el usuario
 //            }
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             // Hubo un error
         } finally {
             if (rs != null) {
@@ -233,8 +218,9 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {
                     stat.close();
                 } catch (SQLException ex) {
                     //
-    return u;            
-    }
+                    return u;
+                }
             }
-        
-    
+        }
+    }
+}
