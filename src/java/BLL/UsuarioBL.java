@@ -18,6 +18,8 @@ import Models.Usuario;
 // * @author Nadia
 // */
 public class UsuarioBL {
+
+    private Usuario u;
     
     public UsuarioBL(){}
     
