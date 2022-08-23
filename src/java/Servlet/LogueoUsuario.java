@@ -4,7 +4,7 @@
  */
 package Servlet;
 
-
+//toman informacion generan respuesta y la devuelven.. pueden ir en la capa de BLL no fomarn parte ni del front end
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
