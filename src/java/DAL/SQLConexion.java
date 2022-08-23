@@ -19,7 +19,7 @@ public class SQLConexion {
 
     private SQLConexion(){
         try {
-            //una sola cadena de conezzion, en un solo paramentro se concatena el 
+            //una sola cadena de conexion, en un solo paramentro se concatena el 
             //usuario y el password
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conexion = DriverManager.getConnection(STRING_CONNECTION); //string de coneccion a bd

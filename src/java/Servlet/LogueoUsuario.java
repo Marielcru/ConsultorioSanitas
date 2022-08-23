@@ -14,7 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import BLL.UsuarioBL;
+import DAL.DAOException;
 import Models.Usuario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -103,7 +106,12 @@ public class LogueoUsuario extends HttpServlet {
         
         String password=request.getParameter("Pass");
         out.print(password); 
-        Usuario usu = new UsuarioBL().login(usuario, password);
+        Usuario usu = null;
+        try {
+            usu = new UsuarioBL().login(usuario, password);
+        } catch (DAOException ex) {
+            Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (usu != null){
             //Esta OK
             response.sendRedirect (new UsuarioBL().getPage(usuario));

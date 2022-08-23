@@ -1,7 +1,6 @@
 package DAL;
 
 import Models.Usuario;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +28,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     }
 
     public UsuarioDAO() {
+        
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -73,8 +73,11 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
         //deberia modificar el usuario, rol y contraseña de la base de datos
         try {
             stat = con.prepareStatement(UPDATE);
+            stat.setInt(0, t.getId());
             stat.setInt(1, t.getId());
-            if (stat.executeUpdate() == 0) {
+            stat.setInt(2, t.getId());
+            stat.setInt(3, t.getId());//utiliza el statemen para sobreescribir los ??
+            if (stat.executeUpdate() == 0) {//devuelve la cantidad de regristros actualizados
                 throw new DAOException("No se guardo");
             }
 
@@ -182,7 +185,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
         return u;
     }
 
-    public Usuario validarUsuario(String user, String pass) throws DAOException {
+    public void validarUsuario(String user, String pass) throws DAOException {
 
         PreparedStatement stat = null;
         ResultSet rs = null;
@@ -218,7 +221,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
                     stat.close();
                 } catch (SQLException ex) {
                     //
-                    return u;
+                    //return u;
                 }
             }
         }
