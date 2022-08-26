@@ -76,7 +76,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
             stat.setInt(0, t.getId());
             stat.setInt(1, t.getId());
             stat.setInt(2, t.getId());
-            stat.setInt(3, t.getId());//utiliza el statemen para sobreescribir los ??
+            stat.setInt(3, t.getId());//utiliza el statemen para sobreescribir los signos de pregunta ??
             if (stat.executeUpdate() == 0) {//devuelve la cantidad de regristros actualizados
                 throw new DAOException("No se guardo");
             }
