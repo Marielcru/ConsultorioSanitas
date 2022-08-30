@@ -40,6 +40,7 @@ public class LogueoUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
+            
             response.sendRedirect ("Administrador.html");
             
             /* TODO output your page here. You may use following sample code. */
@@ -72,6 +73,29 @@ public class LogueoUsuario extends HttpServlet {
        response.setContentType("/html"); 
        
        PrintWriter salida=response.getWriter();
+       
+       String usuario=request.getParameter("usser");
+        out.print(usuario);
+        
+        String password=request.getParameter("Pass");
+        out.print(password); 
+        Usuario usu = null;
+        try {
+            usu = new UsuarioBL().login(usuario, password);
+        } catch (DAOException ex) {
+            Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            out.print(("Error"));
+        }
+        if (usu != null){
+            //Esta OK
+            out.print(usu);
+            response.sendRedirect (new UsuarioBL().getPage(usuario));
+                
+        }
+        else
+        {
+            // No esta OK
+        }
         
         salida.println("<html><body>");
         
@@ -101,26 +125,27 @@ public class LogueoUsuario extends HttpServlet {
         throws ServletException, IOException {
       processRequest(request, response);
       
-       String usuario=request.getParameter("usu");
-        out.print(usuario);
-        
-        String password=request.getParameter("Pass");
-        out.print(password); 
-        Usuario usu = null;
-        try {
-            usu = new UsuarioBL().login(usuario, password);
-        } catch (DAOException ex) {
-            Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (usu != null){
-            //Esta OK
-            response.sendRedirect (new UsuarioBL().getPage(usuario));
-                
-        }
-        else
-        {
-            // No esta OK
-        }
+//       String usuario=request.getParameter("usser");
+//        out.print(usuario);
+//        
+//        String password=request.getParameter("Pass");
+//        out.print(password); 
+//        Usuario usu = null;
+//        try {
+//            usu = new UsuarioBL().login(usuario, password);
+//        } catch (DAOException ex) {
+//            Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        if (usu != null){
+//            //Esta OK
+//            
+//            response.sendRedirect (new UsuarioBL().getPage(usuario));
+//                
+//        }
+//        else
+//        {
+//            // No esta OK
+//        }
         
         
          out.println("<html>");
@@ -128,10 +153,10 @@ public class LogueoUsuario extends HttpServlet {
          out.println("<body>");
 
         
-         out.println(usuario);
+        // out.println(usuario);
          out.println("<br>");
          out.println("Clave:");
-         out.print(password);
+       //  out.print(password);
          
          
          out.println("</body>");
