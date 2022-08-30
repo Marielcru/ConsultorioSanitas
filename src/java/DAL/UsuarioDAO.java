@@ -185,45 +185,59 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
         return u;
     }
 
-    public void validarUsuario(String user, String pass) throws DAOException {
+    public Usuario validarUsuario(String user, String pass) throws DAOException {
 
         PreparedStatement stat = null;
         ResultSet rs = null;
-        Usuario u = null;
-        List<Usuario> listUsuarios = obtenerTodos();
-        for (Usuario usuario : listUsuarios) {
-            if (usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)) {
-                u = usuario;
-            }
-        }
+        Usuario usser = null;
+//        List<Usuario> listUsuarios = obtenerTodos();
+//        for (Usuario usuario : listUsuarios) {
+//            if (usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)) {
+//                u = usuario;
+//            }
+       // }
 
-        try {
-            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "'password = '" + pass);
+        try{
+            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "' password ='" + pass + "'" );
             rs = stat.executeQuery();
+            if (rs.getRow()>0){
+                
+                usser=new Usuario(rs.getMetaData().getColumnClassName(4),rs.getMetaData().getColumnClassName(2),rs.getMetaData().getColumnClassName(3));
+                
+                return usser;
+            }
+              else{
+                return usser;
+            }
             
 //            if () {
 //                u = convertir(rs);
 //            } else {
 //                // no se valido el usuario
 //            }
-        } catch (SQLException ex) {
-            // Hubo un error
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    //
-                }
-            }
-            if (stat != null) {
-                try {
-                    stat.close();
-                } catch (SQLException ex) {
-                    //
-                    //return u;
-                }
-            }
-        }
-    }
+        }catch (SQLException ex) {
+            return usser;
+        } 
+//          finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    //
+//                }
+//            }
+//        }
+   }
 }
+         
+            
+//           if (stat != null) {
+//                try {
+//                    stat.close();
+//                } catch (SQLException ex) {
+//                    //
+//                    //return u;
+//                }
+//            }
+//        }
+    

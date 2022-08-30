@@ -1,5 +1,5 @@
 package DAL;
-
+//realiza conexion con sql.....
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ public class SQLConexion {
     private static SQLConexion instance = null;
     private Connection conexion = null;
     
-    //usuario y clav es
+    //usuario y claves
     private String user = "sa";
     private String password = "1234";
     private String database = "Clinica";

@@ -19,18 +19,26 @@ import Models.Usuario;
 // */
 public class UsuarioBL {
 
-    private Usuario u;
+    private Usuario u=null;
     
     public UsuarioBL(){}
     
     public Usuario login(String user, String pass) throws DAOException {
         UsuarioDAO dao = new UsuarioDAO(SQLConexion.getInstance().getConnection()); //envia la conexion 
-        Usuario u = dao.validarUsuario(user, pass);
+        u = dao.validarUsuario(user, pass);
+       // u=new Usuario("","","");
+       
         return u;
-    }
+    
 
+    }    
     public String getPage(String usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!"".equals(usuario)){
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }else{
+            return "salio mal";
+        }
+        
     }
     
 }
