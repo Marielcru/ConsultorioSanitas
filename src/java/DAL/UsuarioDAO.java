@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     final String DELETE = "DELETE FROM Usuario WHERE IdUsuario= ?";
     final String GETALL = "SELECT IdUsuario,Rol,ussername,password FROM Usuarios";
     final String GETONE = "SELECT IdUsuario,Rol,Name,Contraseña FROM Usuario WHERE IdUsuario=?";
+    
+    
+    final String VALIDAR = "SELECT IdUsuario, Ussername, Password, Rol FROM Usuarios WHERE UsserName = '?' AND password ='?'";
 
     Connection con;
     
@@ -187,57 +191,24 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
 
     public Usuario validarUsuario(String user, String pass) throws DAOException {
 
-        PreparedStatement stat = null;
-        ResultSet rs = null;
         Usuario usser = null;
-//        List<Usuario> listUsuarios = obtenerTodos();
-//        for (Usuario usuario : listUsuarios) {
-//            if (usuario.getName().equals(user) && usuario.getContrasenia().equals(pass)) {
-//                u = usuario;
-//            }
-       // }
+        String query = "SELECT IdUsuario, Ussername, Password, Rol FROM Usuarios WHERE UsserName = '" + user + "' AND password ='" + pass + "'";
+        try (Statement stmt = con.createStatement()) {
+          ResultSet rs = stmt.executeQuery(query);
+          int id = 0;
+          String username = "";
+          String password = "";
+          String rol = "";
+          while (rs.next()) {
+            id = rs.getInt("IdUsuario");
+            username = rs.getString("ussername");
+            password = rs.getString("Password");
+            rol = rs.getString("Rol");
 
-        try{
-            stat = con.prepareStatement("SELECT IdUsuario, Ussername, Password, Rol FROM Usuario WHERE UsserName = '" + user + "' password ='" + pass + "'" );
-            rs = stat.executeQuery();
-            if (rs.getRow()>0){
-                
-                usser=new Usuario(rs.getMetaData().getColumnClassName(4),rs.getMetaData().getColumnClassName(2),rs.getMetaData().getColumnClassName(3));
-                
-                return usser;
-            }
-              else{
-                return usser;
-            }
-            
-//            if () {
-//                u = convertir(rs);
-//            } else {
-//                // no se valido el usuario
-//            }
-        }catch (SQLException ex) {
-            return usser;
-        } 
-//          finally {
-//            if (rs != null) {
-//                try {
-//                    rs.close();
-//                } catch (SQLException ex) {
-//                    //
-//                }
-//            }
-//        }
-   }
-}
-         
-            
-//           if (stat != null) {
-//                try {
-//                    stat.close();
-//                } catch (SQLException ex) {
-//                    //
-//                    //return u;
-//                }
-//            }
-//        }
-    
+          }
+          if (id != 0) usser = new Usuario(rol, username, password);
+        } catch (SQLException e) {
+        }
+        return usser;
+    }
+}   

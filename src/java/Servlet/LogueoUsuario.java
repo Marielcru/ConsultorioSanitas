@@ -68,42 +68,45 @@ public class LogueoUsuario extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       processRequest(request, response);
-       
-       response.setContentType("/html"); 
-       
-       PrintWriter salida=response.getWriter();
+       //processRequest(request, response);
        
        String usuario=request.getParameter("usser");
         out.print(usuario);
         
-        String password=request.getParameter("Pass");
+        String password=request.getParameter("pass");
         out.print(password); 
         Usuario usu = null;
         try {
             usu = new UsuarioBL().login(usuario, password);
         } catch (DAOException ex) {
             Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            out.print(("Error"));
+            // No esta OK
+            response.sendRedirect("index.html");
         }
         if (usu != null){
             //Esta OK
             out.print(usu);
-            response.sendRedirect (new UsuarioBL().getPage(usuario));
+            switch (usu.getRol()) {
+                case "administrador":
+                    response.sendRedirect("Administrador.html");
+                    break;
+                case "medico":
+                    response.sendRedirect("Medico.html");
+                    break;
+                case "paciente":
+                    response.sendRedirect("Paciente.html");
+                    break;
+                default:
+                    response.sendRedirect("index.html");
+                    
+            }
                 
         }
         else
         {
             // No esta OK
+            response.sendRedirect("index.html");
         }
-        
-        salida.println("<html><body>");
-        
-        salida.println("Bienvenido"+ request.getParameter(""));
-        
-        salida.println("<br><br>");
-        
-        salida.println("</body></html>");
         
  
         

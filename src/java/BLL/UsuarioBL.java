@@ -33,8 +33,8 @@ public class UsuarioBL {
 
     }    
     public String getPage(String usuario) {
-        if (!"".equals(usuario)){
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!usuario.equals("")){
+            return "/Administrador.html"; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }else{
             return "salio mal";
         }
