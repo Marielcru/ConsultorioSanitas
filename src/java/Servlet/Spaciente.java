@@ -36,7 +36,7 @@ public class Spaciente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Spaciente</title>");            
+            out.println("<title>Paciente</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Spaciente at " + request.getContextPath() + "</h1>");
