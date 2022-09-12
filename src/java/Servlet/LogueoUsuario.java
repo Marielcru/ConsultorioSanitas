@@ -86,14 +86,14 @@ public class LogueoUsuario extends HttpServlet {
         if (usu != null){
             //Esta OK
             out.print(usu);
-            switch (usu.getRol()) {
-                case "administrador":
+            switch (usu.getidrol()) {
+                case 1:
                     response.sendRedirect("Administrador.html");
                     break;
-                case "medico":
+                case 2:
                     response.sendRedirect("Medico.html");
                     break;
-                case "paciente":
+                case 3:
                     response.sendRedirect("Paciente.html");
                     break;
                 default:

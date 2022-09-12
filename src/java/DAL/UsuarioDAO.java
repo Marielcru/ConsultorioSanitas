@@ -42,7 +42,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
         try {
             stat = con.prepareStatement(INSERT);
             stat.setInt(1, t.getId());
-            stat.setString(2, t.getRol());
+            stat.setInt(2, t.getidrol());
             stat.setString(3, t.getName());
             stat.setString(4, t.getContrasenia());
             if (stat.executeUpdate() == 0) {
@@ -63,10 +63,10 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     }
 
     private Usuario convertir(ResultSet rs) throws SQLException {
-        String rol = rs.getString(ROL); //averigua el tipo de rol
+        int idrol = rs.getInt(ROL); //averigua el tipo de rol
         String usserName = rs.getString(USERNAME);
         String password = rs.getString(PASSWORD);
-        Usuario usuario = new Usuario(rol, usserName, password);
+        Usuario usuario = new Usuario(idrol, usserName, password);
         usuario.setId(rs.getInt(ID));
         return usuario;
     }
@@ -192,21 +192,21 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     public Usuario validarUsuario(String user, String pass) throws DAOException {
 
         Usuario usser = null;
-        String query = "SELECT IdUsuario, Ussername, Password, Rol FROM Usuarios WHERE UsserName = '" + user + "' AND password ='" + pass + "'";
+        String query = "SELECT IdUsuario, Ussername, Password, idrol FROM Usuarios WHERE UsserName = '" + user + "' AND password ='" + pass + "'";
         try (Statement stmt = con.createStatement()) {
           ResultSet rs = stmt.executeQuery(query);
           int id = 0;
           String username = "";
           String password = "";
-          String rol = "";
+          int idrol=0;
           while (rs.next()) {
             id = rs.getInt("IdUsuario");
             username = rs.getString("ussername");
             password = rs.getString("Password");
-            rol = rs.getString("Rol");
+            idrol = rs.getInt("idrol");
 
           }
-          if (id != 0) usser = new Usuario(rol, username, password);
+          if (id != 0) usser = new Usuario(idrol, username, password);
         } catch (SQLException e) {
         }
         return usser;

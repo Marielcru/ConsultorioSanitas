@@ -3,12 +3,12 @@ package Models;
 public class Usuario {
   
     private int id;
-    private String rol=null;
+    private int rol;
     private String name=null;
     private String contrasenia=null;
     
-    public Usuario(String rol,String name,String contrasenia){
-        this.rol=rol;
+    public Usuario(int idrol,String name,String contrasenia){
+        this.rol=idrol;
         this.name=name;
         this.contrasenia=contrasenia;
     }
@@ -21,12 +21,12 @@ public class Usuario {
         this.id=id;
     }
     
-    public String getRol(){
+    public int getidrol(){
         return rol;
     }
     
-    public void setRol(String rol){
-        this.rol=rol;
+    public void setidrol(int idrol){
+        this.rol=idrol;
     }
     
     public String getName(){

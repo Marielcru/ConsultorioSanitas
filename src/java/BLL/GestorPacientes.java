@@ -14,11 +14,11 @@ import java.util.Scanner;
 public final class GestorPacientes {
 	
 	private final ArrayList<DAL.PaciDao> pacientes;
-	private final Scanner teclado;
+	private final Scanner teclado; //no es con scanner es igual al de logueo
 	
 	public GestorPacientes() {
 		pacientes = new ArrayList<DAL.PaciDao>();
-		teclado = new Scanner(System.in);
+		teclado = new Scanner(System.in); //no es con este....
 	}
 	
 	/**
