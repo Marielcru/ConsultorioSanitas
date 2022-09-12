@@ -28,13 +28,15 @@ public final class GestorPacientes {
 	 */
 	public boolean nuevoPaciente() {
 		System.out.println("\n\tALTA NUEVO PACIENTE");
-		System.out.print("Introduzca Identificador: ");
+		System.out.print("Introduzca Identificador: ");//HISTORIA CLINICA
 		String id = teclado.nextLine();
 		System.out.print("Nombre: ");
 		String nombre = teclado.nextLine();
 		System.out.print("Apellidos: ");
 		String apellidos = teclado.nextLine();
-		System.out.print("Genero: ");
+		System.out.print("Genero: "); //F.M.NB
+                
+                
 		String genero = teclado.nextLine();
 		System.out.print("Edad: ");
 		int edad = teclado.nextInt();

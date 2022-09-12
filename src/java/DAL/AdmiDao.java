@@ -17,18 +17,6 @@ public class AdmiDao {
     public AdmiDao(){
         
     }
-//public Connection conectar(){
-//            /*metodo*/
-//            Connection cn=null; 
-//            
-//        try {
-//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            cn=DriverManager.getConnection(connectionUrl);
-//            System.out.println("Conectado.");
-//        } catch (SQLException | ClassNotFoundException ex) {
-//            Logger.getLogger(conexion.class.getName()).log(Level.SEVERE, null, ex);
-//        }    
-//    
     public boolean findById(int id) {
         try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;database=Clinica;user=NETZUKO\\MARCOS;password=");) {
             Statement miStatement=miConexion.createStatement();
@@ -41,34 +29,16 @@ public class AdmiDao {
         }
         // Handle any errors that may have occurred.
         catch (SQLException e) {
-//            e.printStackTrace();
+
         }
-        // conexion
         
-        
-        // consulta
-        
-        // transformacion
         
         return true;
     }
     public boolean validarUsuario(String user,String pass){
         return true;
     }
-    /*
-    
-    public List<Usuario> findAll() {}
-    
-    public void add()
-    
-    public void update(Usuario usu)        
-
-            public void delete(int id)
-                    
-    public Usuario validarUsuario(string user, string pass) {
-        return true;
-    } 
-*/
+  
 
     private static class conexion {
 

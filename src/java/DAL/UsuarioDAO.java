@@ -14,7 +14,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     final String ID = "IdUsuario";
     final String USERNAME = "Ussername";
     final String PASSWORD = "Password";
-    final String ROL = "Rol";
+    final String ROL = "idrol";
 
     final String INSERT = "INSERT INTO Usuario(" + ID + "," + ROL + "," + USERNAME + "," + PASSWORD + ") VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE Usuario SET Rol=?,Name=?,Contraseña=? WHERE IdUsuario=?";
@@ -23,7 +23,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     final String GETONE = "SELECT IdUsuario,Rol,Name,Contraseña FROM Usuario WHERE IdUsuario=?";
     
     
-    final String VALIDAR = "SELECT IdUsuario, Ussername, Password, Rol FROM Usuarios WHERE UsserName = '?' AND password ='?'";
+    final String VALIDAR = "SELECT IdUsuario, Ussername, Password, idrol FROM Usuarios WHERE UsserName = '?' AND password ='?'";
 
     Connection con;
     

@@ -4,9 +4,17 @@
         <servlet-name>SEstudios</servlet-name>
         <servlet-class>Servlet.SEstudios</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SnuevoPaciente</servlet-name>
+        <servlet-class>Servlet.SnuevoPaciente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SEstudios</servlet-name>
         <url-pattern>/SEstudios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SnuevoPaciente</servlet-name>
+        <url-pattern>/SnuevoPaciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

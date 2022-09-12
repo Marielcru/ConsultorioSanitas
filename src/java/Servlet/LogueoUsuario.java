@@ -128,53 +128,23 @@ public class LogueoUsuario extends HttpServlet {
         throws ServletException, IOException {
       processRequest(request, response);
       
-//       String usuario=request.getParameter("usser");
-//        out.print(usuario);
-//        
-//        String password=request.getParameter("Pass");
-//        out.print(password); 
-//        Usuario usu = null;
-//        try {
-//            usu = new UsuarioBL().login(usuario, password);
-//        } catch (DAOException ex) {
-//            Logger.getLogger(LogueoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        if (usu != null){
-//            //Esta OK
-//            
-//            response.sendRedirect (new UsuarioBL().getPage(usuario));
-//                
-//        }
-//        else
-//        {
-//            // No esta OK
-//        }
-        
+       
         
          out.println("<html>");
          out.println("<head></head>");         
          out.println("<body>");
 
         
-        // out.println(usuario);
+        
          out.println("<br>");
          out.println("Clave:");
-       //  out.print(password);
+       
          
          
          out.println("</body>");
          out.println("</html>");
         
          
-//        PrintWriter salida=response.getWriter();
-//        
-//        salida.println("<html><body>");
-//        
-//        salida.println("Bienvenido"+ request.getParameter("usuario"));
-//        
-//        salida.println("<br><br>");
-//        
-//        salida.println("</body></html>");
     }
 
     /**
