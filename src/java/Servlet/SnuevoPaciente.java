@@ -6,6 +6,8 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -57,6 +59,14 @@ public class SnuevoPaciente extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
+       
+	
+	/**
+	 * Crea y registra un nuevo paciente.
+	 * @return True si se pudo registrar con éxito el nuevo paciente.
+	 * False si no fue posible registrarlo.
+	 */
+        
     }
 
     /**
@@ -71,6 +81,14 @@ public class SnuevoPaciente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+       String nombre=request.getParameter("nombre");
+       String apellido=request.getParameter("apellido");
+       String edad=request.getParameter("edad");
+       String dni=request.getParameter("dni");
+       String telefono=request.getParameter("telefono");
+       String email=request.getParameter("email");
+    
     }
 
     /**
