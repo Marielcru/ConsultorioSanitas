@@ -8,18 +8,17 @@ package BLL;
  *
  * @author Marcos
  */
-//import java.util.ArrayList;
+import DAL.UsuarioDAO;
+import java.util.ArrayList;
 //import java.util.Scanner;
 //
 public final class GestorPacientes {
  //chekear por dni
-    
-    
- if(dni=0){
-    
-    system.out(paciente);
-}
-
+ //llamar al metodo obtener por id 
+ //que esta en la clase usuarioDao
+  public  obtener (Integer id){
+  
+  }
 }
 //	
 //	private final ArrayList<DAL.PaciDao> pacientes;
