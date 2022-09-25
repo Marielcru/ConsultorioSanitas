@@ -9,12 +9,21 @@ package BLL;
  * @author Marcos
  */
 
-import Models.Paciente;
+import DAL.UsuarioDAO;
+
+
 //import java.util.Scanner;
 //
-public final class GestorPacientes {
+public class GestorPacientes {
  //chekear por dni
-    
+    public static void UsuarioDAO {
+            
+         UsuarioDAO GestorPacientes = new UsuarioDAO();
+         
+         GestorPacientes.validarUsuario(int 'DNI');
+
+}
+   
   //llamar al metodo obtener por id 
     //que esta en la clase usuarioDao
 

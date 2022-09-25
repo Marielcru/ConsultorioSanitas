@@ -4,8 +4,14 @@
  */
 package Servlet;
 
+
+import DAL.DAOException;
+import Models.Paciente;
+import static java.io.FileDescriptor.out;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +64,38 @@ public class Spaciente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        String iddni;
+        String paciente;
+        
+        paciente = request.getParameter("iddni");
+        out.print(paciente);
+        
+        Paciente pac = null;
+        pac = new Paciente(); // No esta OK
+        if (pac != null){
+            //Esta OK
+            out.print(pac);
+            switch (pac.getiddni()) {
+                case 1:
+                    response.sendRedirect("Paciente.html");
+                    break;
+                case 2:
+                    response.sendRedirect("NuevoPaciente.html");
+                    break;
+                default:
+                    response.sendRedirect("Administrador.html");
+                    
+            }
+                
+        }
+        else
+        {
+            // No esta OK
+            response.sendRedirect("Administrador.html");
+        }
+        
+ 
     }
 
     /**
