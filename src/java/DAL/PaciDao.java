@@ -6,13 +6,14 @@ package DAL;
 
 import Models.Paciente;
 import java.sql.Connection;
+import java.util.List;
 
 /**
  *
  * @author Marcos
  * tiene que ir en models al igual q los otros 2
  */
-public abstract class PaciDao implements DAO<Paciente, Integer> { 
+public class PaciDao implements DAO<Paciente, Integer> { 
     
     final String ID = "iddni";
     
@@ -26,6 +27,31 @@ public abstract class PaciDao implements DAO<Paciente, Integer> {
     
     public PaciDao(Connection con) {
         this.con = con;
+    }
+
+    @Override
+    public void insertar(Paciente t) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void modificar(Paciente t) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void eliminar(Paciente t) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Paciente> obtenerTodos() throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Paciente obtener(Integer id) throws DAOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
     	

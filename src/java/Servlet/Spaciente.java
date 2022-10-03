@@ -4,7 +4,8 @@
  */
 package Servlet;
 
-
+//import BLL.GestorPacientes;
+import BLL.GestorPacientes;
 import DAL.DAOException;
 import Models.Paciente;
 import static java.io.FileDescriptor.out;
@@ -65,38 +66,39 @@ public class Spaciente extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        String iddni;
-        String paciente;
-        
-        paciente = request.getParameter("iddni");
-        out.print(paciente);
-        
-        Paciente pac = null;
-        pac = new Paciente(); // No esta OK
-        if (pac != null){
-            //Esta OK
-            out.print(pac);
-            switch (pac.getiddni()) {
-                case 1:
-                    response.sendRedirect("Paciente.html");
-                    break;
-                case 2:
-                    response.sendRedirect("NuevoPaciente.html");
-                    break;
-                default:
-                    response.sendRedirect("Administrador.html");
-                    
-            }
-                
-        }
-        else
-        {
-            // No esta OK
-            response.sendRedirect("Administrador.html");
-        }
-        
- 
-    }
+//        int id;
+//        Paciente paciente;
+//        
+//        paciente = request.getParameter("id");
+//        System.out.print(Paciente);
+//        //p paciente
+//        Paciente p = null;
+//        p = new Paciente(); // No esta OK
+//        if (p != null){
+//            //Esta OK
+//            System.out.print(p);
+//            
+//            switch (p.getiddni()) {
+//                case 1:
+//                    response.sendRedirect("hcPaciente.html");
+//                    break;
+//                case 2:
+//                    response.sendRedirect("NuevoPaciente.html");
+//                    break;
+//                default:
+//                    response.sendRedirect("Administrador.html");
+//                    
+//            }
+//                
+//        }
+//        else
+//        {
+//            // No esta OK
+//            response.sendRedirect("Administrador.html");
+//        }
+//        
+// 
+   }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -110,8 +112,28 @@ public class Spaciente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+            String dni = request.getParameter("dni");
+        Paciente paciente;
+        
+        try {
+            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(dni));
+        
+            if (paciente != null){
+                response.sendRedirect("hcPaciente.html");
+                
+            }
+            else
+            {
+                // No esta OK
+                response.sendRedirect("Administrador.html");
+            }
+        }
+        catch (Exception e) {
+            // hacer algo en caso de error
+        }
+   }
 
+    
     /**
      * Returns a short description of the servlet.
      *

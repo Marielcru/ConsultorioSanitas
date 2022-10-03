@@ -4,27 +4,20 @@
  */
 package BLL;
 
-/**
- *
- * @author Marcos
- */
-
-import DAL.UsuarioDAO;
-
-
-//import java.util.Scanner;
+///**
+// *
+// * @author Marcos
+// */
 //
+import DAL.DAOException;
+import DAL.PaciDao;
+import DAL.SQLConexion;
+import Models.Paciente;
+
 public class GestorPacientes {
- //chekear por dni
-    public static void UsuarioDAO {
-            
-         UsuarioDAO GestorPacientes = new UsuarioDAO();
-         
-         GestorPacientes.validarUsuario(int 'DNI');
-
-}
-   
-  //llamar al metodo obtener por id 
-    //que esta en la clase usuarioDao
-
+ 
+    public Paciente obtenerPacientePorDNI(int dni) throws DAOException{
+        PaciDao dao= new PaciDao(SQLConexion.getInstance().getConnection());
+       return dao.obtener(dni);
+    }         
 }

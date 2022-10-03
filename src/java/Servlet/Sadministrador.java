@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *no saques los slacht de los paths!!!!!!!!!
  * @author Marcos
  */
 @WebServlet(name = "Administrador", urlPatterns = {"/Administrador"})
@@ -71,10 +71,6 @@ public class Sadministrador extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    
-        
-        
         processRequest(request, response);
         
         
