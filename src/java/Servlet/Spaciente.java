@@ -6,13 +6,9 @@ package Servlet;
 
 //import BLL.GestorPacientes;
 import BLL.GestorPacientes;
-import DAL.DAOException;
 import Models.Paciente;
-import static java.io.FileDescriptor.out;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -125,7 +121,7 @@ public class Spaciente extends HttpServlet {
             else
             {
                 // No esta OK
-                response.sendRedirect("Administrador.html");
+                response.sendRedirect("NuevoPaciente.html");
             }
         }
         catch (Exception e) {

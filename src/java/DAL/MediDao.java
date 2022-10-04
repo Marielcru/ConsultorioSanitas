@@ -4,6 +4,9 @@
  */
 package DAL;
 
+import Models.Medico;
+import java.sql.Connection;
+
 /**
  *
  *@author Marcos
@@ -21,6 +24,10 @@ public class MediDao {
 		this.apellidos = apellidos;
 		this.especialidad = especialidad;
 	}
+
+    public MediDao(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 	public String getId() {
 		return id;
@@ -65,5 +72,9 @@ public class MediDao {
 		System.out.println("Especialidad: " + especialidad);
 		System.out.println("\t---------------");
 	}
+
+    public Medico obtener(int DNI) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
