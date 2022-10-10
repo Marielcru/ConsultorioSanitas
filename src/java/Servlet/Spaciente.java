@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marcos
  */
-@WebServlet(name = "Paciente", urlPatterns = {"/Paciente"})
+@WebServlet(name = "Spaciente", urlPatterns = {"/Spaciente"})
 public class Spaciente extends HttpServlet {
 
     /**
@@ -39,7 +39,7 @@ public class Spaciente extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Paciente</title>");            
+            out.println("<title>SPaciente</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Spaciente at " + request.getContextPath() + "</h1>");
@@ -61,55 +61,10 @@ public class Spaciente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+            
+        String dni = request.getParameter("dni");
         
-//        int id;
-//        Paciente paciente;
-//        
-//        paciente = request.getParameter("id");
-//        System.out.print(Paciente);
-//        //p paciente
-//        Paciente p = null;
-//        p = new Paciente(); // No esta OK
-//        if (p != null){
-//            //Esta OK
-//            System.out.print(p);
-//            
-//            switch (p.getiddni()) {
-//                case 1:
-//                    response.sendRedirect("hcPaciente.html");
-//                    break;
-//                case 2:
-//                    response.sendRedirect("NuevoPaciente.html");
-//                    break;
-//                default:
-//                    response.sendRedirect("Administrador.html");
-//                    
-//            }
-//                
-//        }
-//        else
-//        {
-//            // No esta OK
-//            response.sendRedirect("Administrador.html");
-//        }
-//        
-// 
-   }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-            String dni = request.getParameter("dni");
-        Paciente paciente;
+            Paciente paciente;
         
         try {
             paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(dni));
@@ -127,7 +82,41 @@ public class Spaciente extends HttpServlet {
         catch (Exception e) {
             // hacer algo en caso de error
         }
+
    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //processRequest(request, response);
+//            String dni = request.getParameter("dni");
+//        Paciente paciente;
+//        
+//        try {
+//            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(dni));
+//        
+//            if (paciente != null){
+//                response.sendRedirect("hcPaciente.html");
+//                
+//            }
+//            else
+//            {
+//                // No esta OK
+//                response.sendRedirect("NuevoPaciente.html");
+//            }
+//        }
+//        catch (Exception e) {
+//            // hacer algo en caso de error
+//        }
+           }
 
     
     /**

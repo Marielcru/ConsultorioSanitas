@@ -82,12 +82,12 @@ public class SnuevoPaciente extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-       String nombre=request.getParameter("nombre");
-       String apellido=request.getParameter("apellido");
-       String edad=request.getParameter("edad");
-       String dni=request.getParameter("dni");
-       String telefono=request.getParameter("telefono");
-       String email=request.getParameter("email");
+//       String nombre=request.getParameter("nombre");
+//       String apellido=request.getParameter("apellido");
+//       String edad=request.getParameter("edad");
+//       String dni=request.getParameter("dni");
+//       String telefono=request.getParameter("telefono");
+//       String email=request.getParameter("email");
     
     }
 
