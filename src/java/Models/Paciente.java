@@ -17,8 +17,9 @@ public class Paciente {
     private String nombre="";
     private String apellido="";
     
-    public Paciente(int iddni){
-        this.dni=iddni;
+    public Paciente(int idDNI){
+       
+        this.dni=idDNI;
         
     }
 
@@ -34,12 +35,12 @@ public class Paciente {
         this.id=id;
     }
     
-    public int getiddni(){
+    public int getidDNI(){
         return dni;
     }
     
-    public void setiddni(int iddni){
-        this.dni=iddni;
+    public void setidDNI(int idDNI){
+        this.dni=idDNI;
     }
     
     public String getnombre(){
@@ -62,6 +63,8 @@ public class Paciente {
     public String toString(){
         return this.nombre;
     }
+
+    
 } 
 
 

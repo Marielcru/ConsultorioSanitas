@@ -37,7 +37,7 @@ public class PaciDao implements DAO<Paciente, Integer> {
        PreparedStatement stat = null;
      try{
          stat =con.prepareStatement(INSERT);
-         stat.setInt(1, t.getiddni());
+         stat.setInt(1, t.getidDNI());
          stat.setString(2, t.getnombre());
          stat.setString(3,t.getapellido());
          if(stat.executeUpdate()==0) {

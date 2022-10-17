@@ -97,7 +97,10 @@ public class Spaciente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-            String idDNI = request.getParameter("idDNI");
+            
+         
+        
+        String idDNI = request.getParameter("idDNI");
         Paciente paciente;
         
         try {
