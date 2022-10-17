@@ -140,13 +140,13 @@ public class PaciDao implements DAO<Paciente, Integer> {
     }
     
     @Override
-    public Paciente obtener(Integer id) throws DAOException {
+    public Paciente obtener(Integer idDNI) throws DAOException {
         PreparedStatement stat = null;
         ResultSet rs = null;
         Paciente p = null;
         try {
             stat = con.prepareStatement(GETONE);
-            stat.setInt(1, id);
+            stat.setInt(1, idDNI);
             rs = stat.executeQuery();
             if (rs.next()) {
                 p = convertir(rs);

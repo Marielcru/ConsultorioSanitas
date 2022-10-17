@@ -62,43 +62,9 @@ public class Spaciente extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
             
-        String dni = request.getParameter("dni");
-        
-            Paciente paciente;
-        
-        try {
-            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(dni));
-        
-            if (paciente != null){
-                response.sendRedirect("hcPaciente.html");
-                
-            }
-            else
-            {
-                // No esta OK
-                response.sendRedirect("NuevoPaciente.html");
-            }
-        }
-        catch (Exception e) {
-            // hacer algo en caso de error
-        }
-
-   }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //processRequest(request, response);
-//            String dni = request.getParameter("dni");
-//        Paciente paciente;
+//        int dni = request.getParameter("dni");
+//        
+//            Paciente paciente;
 //        
 //        try {
 //            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(dni));
@@ -116,6 +82,40 @@ public class Spaciente extends HttpServlet {
 //        catch (Exception e) {
 //            // hacer algo en caso de error
 //        }
+
+   }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //processRequest(request, response);
+            String idDNI = request.getParameter("idDNI");
+        Paciente paciente;
+        
+        try {
+            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
+        
+            if (paciente != null){
+                response.sendRedirect("hcPaciente.html");
+                
+            }
+            else
+            {
+                // No esta OK
+                response.sendRedirect("NuevoPaciente.html");
+            }
+        }
+        catch (Exception e) {
+            // hacer algo en caso de error
+        }
            }
 
     
