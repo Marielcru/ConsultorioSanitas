@@ -24,7 +24,7 @@ public class PaciDao implements DAO<Paciente, Integer> {
     final String UPDATE = "UPDATE paciente SET dni=?,Nombre=?, apellido=? WHERE Idpaciente=?";
     final String DELETE = "DELETE FROM paciente WHERE idDNI ?";
     final String GETALL = "SELECT IdDNI, nombre, apellido FROM paciente";
-    final String GETONE = "SELECT IdDNI, nombre, apellido FROM paciente WHERE IdDNI=?";
+    final String GETONE = "SELECT IdDNI, nombre, apellido FROM clinica.persona INNERJOIN clinica.paciente WHERE IdDNI=?";
     
     Connection con;
     
