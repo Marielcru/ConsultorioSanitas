@@ -100,25 +100,25 @@ public class Spaciente extends HttpServlet {
             
          
         
-        String idDNI = request.getParameter("idDNI");
-        Paciente paciente;
-        
-        try {
-            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
-        
-            if (paciente != null){
-                response.sendRedirect("hcPaciente.html");
-                
-            }
-            else
-            {
-                // No esta OK
-                response.sendRedirect("NuevoPaciente.html");
-            }
-        }
-        catch (Exception e) {
-            // hacer algo en caso de error
-        }
+//        String idDNI = request.getParameter("idDNI");
+//        Paciente paciente;
+//        
+//        try {
+//            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
+//        
+//            if (paciente != null){
+//                response.sendRedirect("hcPaciente.html");
+//                
+//            }
+//            else
+//            {
+//                // No esta OK
+//                response.sendRedirect("NuevoPaciente.html");
+//            }
+//        }
+//        catch (Exception e) {
+//            // hacer algo en caso de error
+//        }
            }
 
     
