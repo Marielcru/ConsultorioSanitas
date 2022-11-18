@@ -6,8 +6,6 @@ package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,8 +56,32 @@ public class SnuevoPaciente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
        
+                
+//            private void añadirPaciente(java.awt.event.ActionEvent evt) {
+//                
+//                conn= SqlConnect.ConnetDB(); //coneccion para llamar a la coneccion
+//                String sql= "insert into paciente(nombre, apellido, edad, idDNI, fechanac, direccion, telefono, email) values(?,?,?,?,?,?,?,?)";
+//                        
+//                        try{
+//                            pst = conn.prepareStatement(sql);
+//                            pst.setString(1,txtnombre.getText());
+//                            pst.setString(2,txtapellido.getText());
+//                            pst.setString(3,txtedad.getText());
+//                            pst.setString(4,txtidDNI.getText());
+//                            pst.setString(5,txtfechanac.getText());
+//                            pst.setString(6,txtdireccion.getText());
+//                            pst.setString(7,txttelefono.getText());
+//                            pst.setString(8,txtemail.getText());
+//                            pst.execute();
+//                            JOptionPane.showMessageDialog(null, Data Saved Sucessfully);
+//                            
+//                        }catch(Exception e){
+//                            JOptionPane.shoqMessageDialog(null,e);
+//                        }
+//        }
+       
+           
 	
 	/**
 	 * Crea y registra un nuevo paciente.

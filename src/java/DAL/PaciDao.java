@@ -16,15 +16,15 @@ public class PaciDao implements DAO<Paciente, Integer> {
     
    
     
-    final String ID = "IdDNI";
+    final String ID = "idDNI";
     final String NOMBRE = "nombre";
     final String APELLIDO = "apellido";
    
     final String INSERT = "INSERT INTO paciente(" + ID + "," + NOMBRE+ "," + APELLIDO + ") VALUES(?,?,?,?)";
     final String UPDATE = "UPDATE paciente SET dni=?,Nombre=?, apellido=? WHERE Idpaciente=?";
     final String DELETE = "DELETE FROM paciente WHERE idDNI ?";
-    final String GETALL = "SELECT IdDNI, nombre, apellido FROM paciente";
-    final String GETONE = "SELECT IdDNI, nombre, apellido FROM clinica.persona INNERJOIN clinica.paciente WHERE IdDNI=?";
+    final String GETALL = "SELECT idDNI, nombre, apellido FROM paciente";
+    final String GETONE = "SELECT idDNI FROM paciente WHERE idDNI=?";
     
     Connection con;
     

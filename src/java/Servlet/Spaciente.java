@@ -97,28 +97,28 @@ public class Spaciente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-            
-         
+                   
         
-//        String idDNI = request.getParameter("idDNI");
-//        Paciente paciente;
-//        
-//        try {
-//            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
-//        
-//            if (paciente != null){
-//                response.sendRedirect("hcPaciente.html");
-//                
-//            }
-//            else
-//            {
-//                // No esta OK
-//                response.sendRedirect("NuevoPaciente.html");
-//            }
-//        }
-//        catch (Exception e) {
-//            // hacer algo en caso de error
-//        }
+       int idDNI= Integer.parseInt(request.getParameter("idDNI"));
+        Paciente paciente;
+        paciente= null;
+        
+        try {
+            //paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
+        
+            if (paciente != null && paciente.getidDNI()==idDNI){
+                response.sendRedirect("hcPaciente.html"); //si el paciente existe
+                
+            }
+            else
+            {
+                // No esta OK
+                response.sendRedirect("NuevoPaciente.html"); //si el paciente no existe
+            }
+        }
+        catch (Exception e) {
+            // hacer algo en caso de error
+        }
            }
 
     

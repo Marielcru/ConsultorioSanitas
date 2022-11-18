@@ -4,8 +4,6 @@
  */
 package Servlet;
 
-import BLL.GestorPacientes;
-import Models.Paciente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -74,28 +72,7 @@ public class Sadministrador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-          String idDNI = request.getParameter("idDNI");
-        Paciente paciente;
-        
-        try {
-            paciente = new GestorPacientes().obtenerPacientePorDNI(Integer.parseInt(idDNI));
-        
-            if (paciente != null){
-                response.sendRedirect("hcPaciente.html");
-                
-            }
-            else
-            {
-                // No esta OK
-                response.sendRedirect("NuevoPaciente.html");
-            }
-        }
-        catch (Exception e) {
-            // hacer algo en caso de error
-        }
-        
-              
-        
+    
     }
 
     /**

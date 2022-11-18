@@ -17,7 +17,9 @@ import Models.Paciente;
 public class GestorPacientes {
     
     public Paciente obtenerPacientePorDNI(int idDNI) throws DAOException{
-        PaciDao dao= new PaciDao(SQLConexion.getInstance().getConnection()); //aca esta la falla....
+        
+        PaciDao dao= new PaciDao(SQLConexion.getInstance().getConnection());
+        
        return dao.obtener(idDNI);
     }         
 }

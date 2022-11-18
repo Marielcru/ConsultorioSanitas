@@ -17,7 +17,7 @@ public class AdmiDao {
     public AdmiDao(){
         
     }
-    public boolean findById(int id) {
+    public boolean findById(int idDNI) {
         try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://localhost;database=Clinica;user=NETZUKO\\MARCOS;password=");) {
             Statement miStatement=miConexion.createStatement();
             ResultSet miResultSet=miStatement.executeQuery("select idUsuario from Usuarios contraseña");

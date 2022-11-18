@@ -6,29 +6,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Created on : 16 nov. 2022, 13:11:37
     Author     : Marcos
 */
-body
-    {
-
-    background-color: buttonface;
-    }
-
-h1{
+body{ 
+    background: red 
+    |}
+P { 
+    background: url("chess.png") gray 50% repeat fixed 
+  }
+h1{/*titulo Consultorio*/
+ /*1*/   color: #48d1cc;
+ /*2*/   text-decoration: underline;
+ /*3*/   text-align: center;
+ /*4*/   font-size: 50px;
+ /*5*/   font-family: 'Lucida Console', Monaco, monospace
+   
+  }
+h2{/* boxes para ingreso de usuarios*/
     color:#0000ff; /*colores en exadecimal este es azul*/
     text-decoration: underline; /*subrayado*/
-
-}
-p{
-    font-size: 25px;
+    text-align: center;
+    font-size: 25px; /*tamañofuente*/
     font-family: 'Trebuchet MS', sans-serif
+   }
 
-}
-h2{
-    color: #000000;
-
-
-
-}
-p{
-    font-size: 35px;
-    font-family: 'Trebuchet MS', sans-serif;
-}
