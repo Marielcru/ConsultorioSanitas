@@ -7,8 +7,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
     Author     : Marcos
 */
 body{ 
-    background: red 
-    |}
+    background-color: green;
+    }
 P { 
     background: url("chess.png") gray 50% repeat fixed 
   }
