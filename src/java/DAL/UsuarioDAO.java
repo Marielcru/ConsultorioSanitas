@@ -1,3 +1,4 @@
+
 package DAL;
 
 import Models.Usuario;
@@ -20,7 +21,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
     final String UPDATE = "UPDATE Usuario SET Rol=?,Name=?,Contraseña=? WHERE IdUsuario=?";
     final String DELETE = "DELETE FROM Usuario WHERE IdUsuario= ?";
     final String GETALL = "SELECT IdUsuario,Rol,ussername,password FROM Usuarios";
-    final String GETONE = "SELECT IdUsuario,Rol,Name,Contraseña FROM Usuario WHERE IdUsuario=?";
+    final String GETONE = "SELECT IdUsuario,Rol,ussername,password FROM Usuarios WHERE IdUsuario=?";
     
     
     final String VALIDAR = "SELECT IdUsuario, Ussername, Password, idrol FROM Usuarios WHERE UsserName = '?' AND password ='?'";
@@ -71,6 +72,8 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
         return usuario;
     }
 
+    
+    
     @Override
     public void modificar(Usuario t) throws DAOException {
         PreparedStatement stat = null;
@@ -208,6 +211,7 @@ public class UsuarioDAO implements DAO<Usuario, Integer> {//<dato generico, key 
           }
           if (id != 0) usser = new Usuario(idrol, username, password);
         } catch (SQLException e) {
+            throw new DAOException("hubo un error en el dao");
         }
         return usser;
     }

@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
@@ -5,9 +6,9 @@
 package Servlet;
 
 
+import BLL.GestorPacientes;
 import DAL.DAOException;
 import Models.Paciente;
-import static java.io.FileDescriptor.out;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Marcos
  */
-@WebServlet(name = "Paciente", urlPatterns = {"/Paciente"})
+@WebServlet(name = "Spaciente", urlPatterns = {"/Spaciente"})
 public class Spaciente extends HttpServlet {
 
     /**
@@ -38,6 +39,9 @@ public class Spaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            
+            response.sendRedirect ("Paciente.html");
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -63,34 +67,27 @@ public class Spaciente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
         
-        String iddni;
-        String paciente;
         
-        paciente = request.getParameter("iddni");
-        out.print(paciente);
+        //String paciente;
+        
+        int iddni = Integer.parseInt(request.getParameter("dni"));
+        System.out.print(iddni);
         
         Paciente pac = null;
-        pac = new Paciente(); // No esta OK
-        if (pac != null){
-            //Esta OK
-            out.print(pac);
-            switch (pac.getiddni()) {
-                case 1:
-                    response.sendRedirect("Paciente.html");
-                    break;
-                case 2:
-                    response.sendRedirect("NuevoPaciente.html");
-                    break;
-                default:
-                    response.sendRedirect("Administrador.html");
-                    
-            }
-                
+        try {
+            pac = new GestorPacientes().buscarPacientes(iddni);
+        if (pac != null  && pac.getiddni() == iddni){
+            response.sendRedirect("Paciente.html");
         }
         else
         {
+            // No esta OK
+            response.sendRedirect("NuevoPaciente.html");
+        }
+        } catch (DAOException ex) {
+            Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
             // No esta OK
             response.sendRedirect("Administrador.html");
         }

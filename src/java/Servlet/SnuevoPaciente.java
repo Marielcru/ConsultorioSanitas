@@ -4,10 +4,13 @@
  */
 package Servlet;
 
+import BLL.GestorPacientes;
+import DAL.DAOException;
+import Models.Paciente;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +35,7 @@ public class SnuevoPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -80,14 +84,31 @@ public class SnuevoPaciente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
         
        String nombre=request.getParameter("nombre");
        String apellido=request.getParameter("apellido");
-       String edad=request.getParameter("edad");
+       String fechaNac=request.getParameter("fechanac");
        String dni=request.getParameter("dni");
+       String direccion=request.getParameter("direccion");
        String telefono=request.getParameter("telefono");
        String email=request.getParameter("email");
+       String obraSocial=request.getParameter("obrasocial");
+      
+       
+        Paciente pac = null;
+        try {
+            pac = new GestorPacientes().ingresarNuevoPaciente(dni,nombre, apellido, fechaNac, direccion, telefono, email,obraSocial);
+            if (pac != null){
+                response.sendRedirect("Paciente.html");
+            }
+        
+        } catch (DAOException ex) {
+            Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
+            // No esta OK
+            response.sendRedirect("NuevoPaciente.html");
+        }
+        
     
     }
 

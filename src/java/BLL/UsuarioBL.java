@@ -29,9 +29,9 @@ public class UsuarioBL {
        // u=new Usuario("","","");
        
         return u;
+    }  
     
-
-    }    
+    
     public String getPage(String usuario) {
         if (!usuario.equals("")){
             return "/Administrador.html"; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

@@ -10,10 +10,10 @@ public class SQLConexion {
     private Connection conexion = null;
     
     //usuario y claves
-    private String user = "sa";
+    private String user = "clinica";
     private String password = "1234";
     private String database = "Clinica";
-    private String instanceDB = "//localhost\\SQLEXPRESS";
+    private String instanceDB = "//localhost";
     
     private String STRING_CONNECTION = "jdbc:sqlserver:" + instanceDB + ";databaseName=" + database + ";user=" + user + ";password=" + password + ";TrustServerCertificate=True;";
 

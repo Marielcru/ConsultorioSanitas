@@ -4,64 +4,56 @@
  */
 package Models;
 
+import java.util.Date;
+
 /**
  *
  * @author Marcos
  */
-public class Paciente {
+public class Paciente extends Persona {
     //caracteristicas de la base de datos... datos que necesito de la base de datos
     //usamos interfaz para obligar a la clase implementar nos aseguramos que esten todos los metodos del DAO
 
-    private int id;
-    private int dni;
-    private String nombre="";
-    private String apellido="";
-    
-    public Paciente(int iddni){
-        this.dni=iddni;
-        
+     private String nombre;
+     private String apellido;
+     private int dni;
+     private String direccion;
+     private String telefono;
+     private String mail;
+     private int rol;
+      private Date fechaNac;
+    private int idObraSocial;
+
+    public Paciente(String nombre, String apellido, int dni, String direccion, String telefono, String mail, int rol,Date fechaNac,int idObraSocial) {
+        super(nombre, apellido,dni,  direccion, telefono, mail,  rol,fechaNac);
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.dni=dni;
+        this.direccion=direccion;
+        this.telefono=telefono;
+        this.mail=mail;
+        this.rol=rol;
+        this.fechaNac=fechaNac;
+        this.idObraSocial=idObraSocial;
     }
 
-    public Paciente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    public int getId(){
-        return id;
-    }
-    
-    public void setId(int id){
-        this.id=id;
-    }
-    
+   
     public int getiddni(){
         return dni;
     }
     
     public void setiddni(int iddni){
-        this.dni=iddni;
+        dni=iddni;
+    }
+   
+     public int getidObraSocial(){
+        return idObraSocial;
     }
     
-    public String getnombre(){
-        return nombre;
+    public void setidObraSocial(int idObraSocial){
+        this.idObraSocial=idObraSocial;
     }
     
-    public void setnombre(String nombre){
-        this.nombre=nombre;
-    }
-    
-    public String getapellido(){
-        return apellido;
-    }
-    
-    public void setapellido(String apellido){
-        this.apellido=apellido;
-    }
-    
-    @Override
-    public String toString(){
-        return this.nombre;
-    }
 } 
 
 

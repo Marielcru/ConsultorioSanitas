@@ -71,11 +71,10 @@ public class LogueoUsuario extends HttpServlet {
        //processRequest(request, response);
        
        String usuario=request.getParameter("usser");
-        out.print(usuario);
-        
         String password=request.getParameter("pass");
-        out.print(password); 
+        
         Usuario usu = null;
+        
         try {
             usu = new UsuarioBL().login(usuario, password);
         } catch (DAOException ex) {
