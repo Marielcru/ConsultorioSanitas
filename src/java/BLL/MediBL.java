@@ -10,7 +10,6 @@ import DAL.PersonaDao;
 import DAL.SQLConexion;
 import Models.Especialidad;
 import Models.Medico;
-import Models.ObraSocial;
 import Models.Persona;
 import java.text.SimpleDateFormat;
 import java.util.Date;

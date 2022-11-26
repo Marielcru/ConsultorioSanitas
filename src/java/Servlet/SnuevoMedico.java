@@ -4,9 +4,9 @@
  */
 package Servlet;
 
-import BLL.GestorPacientes;
+import BLL.MediBL;
 import DAL.DAOException;
-import Models.Paciente;
+import Models.Medico;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -86,19 +86,19 @@ public class SnuevoMedico extends HttpServlet {
        String direccion=request.getParameter("direccion");
        String telefono=request.getParameter("telefono");
        String email=request.getParameter("email");
-       String obraSocial=request.getParameter("matricula");
+       String matricula=request.getParameter("matricula");
        String especialidad=request.getParameter("especialidad");
       
        
-        Paciente pac = null;
+        Medico med = null;
         try {
-            pac = new GestorPacientes().ingresarNuevoPaciente(dni,nombre, apellido, fechaNac, direccion, telefono, email,obraSocial);
-            if (pac != null){
+            med = new MediBL().ingresarNuevoMedico(dni,nombre, apellido, fechaNac, direccion, telefono, email,especialidad,matricula);
+            if (med != null){
                 response.sendRedirect("Medico.html");
             }
         
         } catch (DAOException ex) {
-            Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Smedico.class.getName()).log(Level.SEVERE, null, ex);
             // No esta OK
             response.sendRedirect("NuevoMedico.html");
         }
