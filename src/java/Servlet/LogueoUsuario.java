@@ -68,8 +68,25 @@ public class LogueoUsuario extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       //processRequest(request, response);
-       
+       processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
+    @Override
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    
+        throws ServletException, IOException {
+      //processRequest(request, response);
+      
        String usuario=request.getParameter("usser");
         String password=request.getParameter("pass");
         
@@ -106,43 +123,6 @@ public class LogueoUsuario extends HttpServlet {
             // No esta OK
             response.sendRedirect("index.html");
         }
-        
- 
-        
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    @Override
-    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    
-        throws ServletException, IOException {
-      processRequest(request, response);
-      
-       
-        
-         out.println("<html>");
-         out.println("<head></head>");         
-         out.println("<body>");
-
-        
-        
-         out.println("<br>");
-         out.println("Clave:");
-       
-         
-         
-         out.println("</body>");
-         out.println("</html>");
-        
          
     }
 

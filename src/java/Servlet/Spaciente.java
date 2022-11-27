@@ -67,13 +67,24 @@ public class Spaciente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        
-        
-        //String paciente;
-        
+        processRequest(request, response);
+ 
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       // processRequest(request, response);
+       
         int iddni = Integer.parseInt(request.getParameter("dni"));
-        System.out.print(iddni);
         
         Paciente pac = null;
         try {
@@ -92,21 +103,6 @@ public class Spaciente extends HttpServlet {
             response.sendRedirect("Administrador.html");
         }
         
- 
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

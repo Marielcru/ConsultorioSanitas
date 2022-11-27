@@ -70,7 +70,7 @@ public class SobraSocial extends HttpServlet {
         
         try {
             oSocial = new ObraSocialBL().buscarOSocial(obraSocial);
-            if (oSocial != null && oSocial.getNombreOS().equals(obraSocial)){
+            if (oSocial != null && oSocial.getNombreOS().equalsIgnoreCase(obraSocial)){
                 
                 response.sendRedirect("ObraSocial.html");
         }else
