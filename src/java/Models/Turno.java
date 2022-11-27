@@ -11,18 +11,27 @@ import java.util.Date;
  * @author Nadia
  */
 public class Turno {
+    private int idTurno=0;
      private int dni=0;
     private String especialidad=null;
     private String medico=null;
      private Date fecha=null;
      
-     public Turno(int dni,String especialidad,String medico,Date fecha){
+     public Turno(int dni,String especialidad,String medico,Date fecha,String hora){
          this.dni=dni;
          this.especialidad=especialidad;
          this.medico=medico;
          this.fecha=fecha;
      }
      
+     public int getIdTurno(){
+        return idTurno;
+    }
+    
+    public void setIdTurno(int idTurno){
+        this.idTurno=idTurno;
+    }
+    
      public int getDni(){
         return dni;
     }

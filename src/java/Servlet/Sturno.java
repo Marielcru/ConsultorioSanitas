@@ -88,7 +88,7 @@ public class Sturno extends HttpServlet {
           
           try {
             turno = new TurnoBL().buscarTurnos(dni);
-        
+         
         } catch (DAOException ex) {
             Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
             // No esta OK

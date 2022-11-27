@@ -4,10 +4,10 @@
  */
 package BLL;
 
+import DAL.DAOException;
 import DAL.SQLConexion;
 import DAL.TurnoDao;
 import Models.Turno;
-import java.util.Date;
 
 /**
  *
@@ -15,10 +15,12 @@ import java.util.Date;
  */
 public class TurnoBL {
     private Turno t=null;
-    public Turno buscarTurnos(Date fecha) throws DAOException {
+    
+    public Turno buscarTurnos(int id) throws DAOException {
         TurnoDao dao = new TurnoDao(SQLConexion.getInstance().getConnection()); //envia la conexion 
-        t = dao.obtener(fecha);
+        t = dao.obtener(id);
        
         return t;
+    }
     
 }

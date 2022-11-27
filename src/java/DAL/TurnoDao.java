@@ -7,8 +7,10 @@ package DAL;
 import Models.Turno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class TurnoDao implements DAO<Turno, Integer> {
     final String GETONE = "SELECT Dni, Especialidad,Medico,Fecha,Hora FROM turno WHERE Dni=?";
     
     Connection con;
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         String fecha = sdf.format(new Date());
 
     public TurnoDao(Connection con) {
         this.con = con;
@@ -38,8 +43,7 @@ public class TurnoDao implements DAO<Turno, Integer> {
     @Override
     public void insertar(Turno t) throws DAOException {
         PreparedStatement stat = null;
-       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         String fecha = sdf.format(new Date());
+       
      try{
           stat =con.prepareStatement(INSERT);
          stat.setInt(1, t.getDni());
@@ -66,22 +70,127 @@ public class TurnoDao implements DAO<Turno, Integer> {
 
     @Override
     public void modificar(Turno t) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement stat = null;
+        
+        try {
+            stat = con.prepareStatement(UPDATE);
+            stat.setInt(1, t.getDni());
+            stat.setString(2, t.getEspecialidad());
+            stat.setString(3, t.getMedico());
+            stat.setString(4, fecha);
+           // stat.setString(5, t.getEspecialidad());
+            if (stat.executeUpdate() == 0) {
+                throw new DAOException("No se guardo");
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL", ex);
+        } finally {
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
     }
 
     @Override
     public void eliminar(Turno t) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement stat = null;
+        try {
+            stat = con.prepareStatement(DELETE);
+            stat.setInt(1, t.getIdTurno());
+            if (stat.executeUpdate() == 0) {
+                throw new DAOException("No se guardo");
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL", ex);
+        } finally {
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
     }
 
     @Override
     public List<Turno> obtenerTodos() throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        PreparedStatement stat = null;
+        ResultSet rs = null;
+        List<Turno> turno = new ArrayList<>();
+        try {
+            stat = con.prepareStatement(GETALL);
+            rs = stat.executeQuery();
+            while (rs.next()) {
+                turno.add(convertir(rs));
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL", ex);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
+        return turno;
     }
 
     @Override
     public Turno obtener(Integer id) throws DAOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       PreparedStatement stat = null;
+        ResultSet rs = null;
+        Turno t = null;
+        try {
+            stat = con.prepareStatement(GETONE);
+            stat.setInt(1, id);
+            rs = stat.executeQuery();
+            if (rs.next()) {
+                t = convertir(rs);
+            }
+        } catch (SQLException ex) {
+            throw new DAOException("Error en SQL", ex);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+            if (stat != null) {
+                try { 
+                    stat.close();
+                } catch (SQLException ex) {
+                    throw new DAOException("Error en SQL", ex);
+                }
+            }
+        }
+        return t;
+    }
+    
+    private Turno convertir(ResultSet rs) throws SQLException{
+        int dni = rs.getInt(ID); 
+        String especialidad = rs.getString(ESPECIALIDAD);
+        String medico = rs.getString(MEDICO);
+        Date fecha = rs.getDate(FECHA);
+        String hora = rs.getString(HORA);
+        Turno turno = new Turno(dni,especialidad,medico,fecha,hora);
+        turno.setDni(rs.getInt(ID));
+        return turno;
     }
     
 }
