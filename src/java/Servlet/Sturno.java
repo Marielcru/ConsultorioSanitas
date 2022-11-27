@@ -5,6 +5,7 @@
 package Servlet;
 
 import BLL.GestorPacientes;
+import BLL.TurnoBL;
 import DAL.DAOException;
 import Models.Turno;
 import java.io.IOException;
@@ -86,15 +87,11 @@ public class Sturno extends HttpServlet {
           Turno turno=null;
           
           try {
-            turno = new GestorPacientes().ingresarNuevoPaciente(dni,nombre, apellido, fechaNac, direccion, telefono, email,obraSocial);
-            if (pac != null){
-                response.sendRedirect("Paciente.html");
-            }
+            turno = new TurnoBL().buscarTurnos(dni);
         
         } catch (DAOException ex) {
             Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
             // No esta OK
-            response.sendRedirect("NuevoPaciente.html");
         }
         
     }
