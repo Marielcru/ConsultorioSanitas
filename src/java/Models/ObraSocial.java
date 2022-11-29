@@ -13,10 +13,9 @@ public class ObraSocial {
     private String nombreOS;
     
     public ObraSocial() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-     public ObraSocial(int id,String nombreOS){
+     public ObraSocial(int idOSocial,String nombreOS){
        this.idOSocial=idOSocial;
        this.nombreOS=nombreOS;  
     }

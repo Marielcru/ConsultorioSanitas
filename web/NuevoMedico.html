@@ -24,26 +24,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <div class="title-4 let-white">
            <form action="SnuevoMedico" method="post">
             
-            Nombre: <input type="text" name="nombre"> 
+            Nombre: <input type="text" name="nombre" id="inputNombre"> 
             <br><br> 
-            Apellido: <input type="text" name="apellido">
+            Apellido: <input type="text" name="apellido" id="inputApellido">
             <br><br>
-            Fecha Nacimiento: <input type="text" name="fechanac">
+            Fecha Nacimiento: <input type="text" name="fechanac" value="ddMMaaaa" id="inputFecha">
             <br><br>
-            DNI:<input type="number" name="dni">
+            DNI:<input type="number" name="dni" id="inputDNI">
             <br><br>
-            Direccion: <input type="text" name="direccion"> 
+            Direccion: <input type="text" name="direccion" id="inputDireccion"> 
             <br><br>
-            Telefono:<input type="text" name="telefono">
+            Telefono:<input type="text" name="telefono" id="inputTelefono">
             <br><br>
-            Email:<input type="email" name="email">
+            Email:<input type="email" name="email" id="inputEmail">
             <br><br>
-            Matrícula: <input type="number" name="matricula"> 
+            Matrícula: <input type="number" name="matricula" id="inputMatricula"> 
             <br><br>
-            Especialidad:<input type="text" name="especialidad">
+            Especialidad:<input type="text" name="especialidad" id="inputEspecialidad">
             <br><br>
-                        <input type="submit" value="Aceptar"> 
+                        <input type="submit" value="Aceptar" > 
            </form>  
     </div>
+    <script src="JS/jquery.js"></script>
+        <script src="JS/nuevoMedico.js"></script>
     </body>
 </html>

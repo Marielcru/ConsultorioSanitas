@@ -16,12 +16,14 @@ public class Turno {
     private String especialidad=null;
     private String medico=null;
      private Date fecha=null;
+      private String hora=null;
      
      public Turno(int dni,String especialidad,String medico,Date fecha,String hora){
          this.dni=dni;
          this.especialidad=especialidad;
          this.medico=medico;
          this.fecha=fecha;
+         this.hora=hora;
      }
      
      public int getIdTurno(){
@@ -54,5 +56,21 @@ public class Turno {
     
     public void setMedico(String medico){
         this.medico=medico;
+    }
+    
+    public Date getFecha(){
+        return fecha;
+    }
+    
+    public void setFecha(Date fecha){
+        this.fecha=fecha;
+    }
+    
+    public String getHora(){
+        return hora;
+    }
+    
+    public void setHora(String hora){
+        this.hora=hora;
     }
 }

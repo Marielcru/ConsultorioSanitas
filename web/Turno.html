@@ -24,18 +24,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <div class="title-4 let-white">
            <form action="Sturno" method="post">
             
-            DNI: <input type="number" name="dni"> 
+            DNI: <input type="number" name="dni" id="inputDNi"> 
             <br><br> 
-            Especialidad:<input type="text" name="especialidad">
+            Especialidad:<input type="text" name="especialidad" id="inputEspecialidad">
             <br><br>
-            Médico: <input type="text" name="medico">
+            Médico: <input type="text" name="medico" id="inputMedico">
             <br><br>
-            Fecha: <input type="text" name="fecha">
+            Fecha: <input type="text" name="fecha" value="ddMMaaaa" id="inputFecha">
+            <br><br>
+            Hora: <input type="text" name="hora" value="h:mm" id="inputHora">
             <br><br>
            
             
-            <input type="submit" value="Aceptar"> 
+            <input type="button" value="Aceptar" onClick="javascript: generarTurno()"> 
            </form>  
     </div>
+            <script src="JS/jquery.js"></script>
+            <script src="JS/turno.js"></script>
     </body>
 </html>

@@ -38,7 +38,7 @@ public class OSocialDao implements DAO<ObraSocial, Integer>{
          PreparedStatement stat = null;
      try{
          stat =con.prepareStatement(INSERT);
-         stat.setInt(1, t.getidOSocial());
+         //stat.setInt(1, t.getidOSocial());
          stat.setString(2, t.getNombreOS());
          if(stat.executeUpdate()==0) {
             throw new DAOException("no se guardo la Obra Social");

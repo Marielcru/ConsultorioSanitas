@@ -25,11 +25,11 @@ public class TurnoDao implements DAO<Turno, Integer> {
     final String FECHA  = "Fecha";
     final String HORA  = "Hora";
     
-    final String INSERT = "INSERT INTO turno(" + ID + "," + ESPECIALIDAD+ "," + MEDICO+ "," + FECHA+ "," + HORA+ ") VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE turno SET DNI=?,Especialidad=?,Medico=?,Fecha=?,Hora=? WHERE DNI=?";
-    final String DELETE = "DELETE FROM turno WHERE DNI=?";
-    final String GETALL = "SELECT Dni, Especialidad,Medico,Fecha,Hora FROM turno";
-    final String GETONE = "SELECT Dni, Especialidad,Medico,Fecha,Hora FROM turno WHERE Dni=?";
+    final String INSERT = "INSERT INTO turnos(" + ID + "," + ESPECIALIDAD+ "," + MEDICO+ "," + FECHA+ "," + HORA+ ") VALUES(?,?,?,?,?)";
+    final String UPDATE = "UPDATE turnos SET DNI=?,Especialidad=?,Medico=?,Fecha=?,Hora=? WHERE DNI=?";
+    final String DELETE = "DELETE FROM turnos WHERE DNI=?";
+    final String GETALL = "SELECT Dni, Especialidad,Medico,Fecha,Hora FROM turnos";
+    final String GETONE = "SELECT Dni, Especialidad,Medico,Fecha,Hora FROM turnos WHERE Dni=?";
     
     Connection con;
     
@@ -50,6 +50,7 @@ public class TurnoDao implements DAO<Turno, Integer> {
          stat.setString(2, t.getEspecialidad());
          stat.setString(3, t.getMedico());
          stat.setString(4, fecha);
+         stat.setString(5, t.getHora());
          if(stat.executeUpdate()==0) {
             throw new DAOException("no se guardo el paciente");
      }

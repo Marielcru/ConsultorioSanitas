@@ -41,7 +41,7 @@ public class MediBL {
         }
         int idEspecialidad=0;
         Especialidad especialidades= new EspecialidadBL().buscarEspecialidad(especialidad);
-            if (especialidades != null && especialidades.getEspecialidad().equals(especialidad)){
+            if (especialidades != null && especialidades.getEspecialidad().equalsIgnoreCase(especialidad)){
                 
                 idEspecialidad=especialidades.getidEspecialidad();
         }else{

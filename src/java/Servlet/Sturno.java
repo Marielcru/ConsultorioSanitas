@@ -4,7 +4,6 @@
  */
 package Servlet;
 
-import BLL.GestorPacientes;
 import BLL.TurnoBL;
 import DAL.DAOException;
 import Models.Turno;
@@ -83,16 +82,17 @@ public class Sturno extends HttpServlet {
           String especialidad=request.getParameter("especialidad");
           String medico=request.getParameter("medico");
           String fecha=request.getParameter("fecha");
+          String hora=request.getParameter("hora");
           
-          Turno turno=null;
-          
-          try {
-            turno = new TurnoBL().buscarTurnos(dni);
-         
+          response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
+            
+        try {
+           Turno  turno = new TurnoBL().ingresarNuevoTurno(dni,especialidad,medico,fecha,hora);
         } catch (DAOException ex) {
-            Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
-            // No esta OK
+            Logger.getLogger(Sturno.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         
     }
 

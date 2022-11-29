@@ -98,7 +98,18 @@ public class SobraSocial extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        String idOS= request.getParameter("id");
+        String obraSocial = request.getParameter("obraSocial");
+        
+        ObraSocial oSocial = null;
+        
+        try {
+            oSocial = new ObraSocialBL().ingresarObraSocial(Integer.parseInt(idOS),obraSocial);
+        } catch (DAOException ex) {
+            Logger.getLogger(SobraSocial.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ package BLL;
 import DAL.DAOException;
 import DAL.SQLConexion;
 import DAL.OSocialDao;
+import DAL.PersonaDao;
 import Models.ObraSocial;
 import java.util.List;
 
@@ -32,7 +33,14 @@ public class ObraSocialBL {
         return null;
     
 
-    }    
+    }
+
+     public ObraSocial ingresarObraSocial(int id,String nombre) throws DAOException{
+         OSocialDao dao = new OSocialDao(SQLConexion.getInstance().getConnection()); 
+         ObraSocial oSocial = new ObraSocial(id,nombre);
+         dao.insertar(oSocial);
+         return oSocial;
+     }
     public String getPage(String obraSocial) {
         if (!obraSocial.equals("")){
             return "/Administrador.html"; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

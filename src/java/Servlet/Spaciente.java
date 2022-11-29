@@ -87,20 +87,25 @@ public class Spaciente extends HttpServlet {
         int iddni = Integer.parseInt(request.getParameter("dni"));
         
         Paciente pac = null;
+            response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
         try {
             pac = new GestorPacientes().buscarPacientes(iddni);
         if (pac != null  && pac.getiddni() == iddni){
-            response.sendRedirect("Paciente.html");
+           // response.sendRedirect("Paciente.html");
+            response.getWriter().write("Bienvenido");
         }
         else
         {
             // No esta OK
-            response.sendRedirect("NuevoPaciente.html");
+            //response.sendRedirect("NuevoPaciente.html");
+            response.getWriter().write("ERROR");
         }
         } catch (DAOException ex) {
             Logger.getLogger(Spaciente.class.getName()).log(Level.SEVERE, null, ex);
             // No esta OK
-            response.sendRedirect("Administrador.html");
+           // response.sendRedirect("Administrador.html");
+            response.getWriter().write("ERROR");
         }
         
     }

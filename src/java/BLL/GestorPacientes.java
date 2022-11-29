@@ -46,7 +46,7 @@ public class GestorPacientes {
         }
         int idOS=0;
         ObraSocial oSocial = new ObraSocialBL().buscarOSocial(obraSocial);
-            if (oSocial != null && oSocial.getNombreOS().equals(obraSocial)){
+            if (oSocial != null && oSocial.getNombreOS().equalsIgnoreCase(obraSocial)){
                 
                 idOS=oSocial.getidOSocial();
         }else{

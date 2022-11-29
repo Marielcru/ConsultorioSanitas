@@ -91,6 +91,8 @@ public class SnuevoMedico extends HttpServlet {
       
        
         Medico med = null;
+        response.setContentType("text/plain");
+            response.setCharacterEncoding("UTF-8");
         try {
             med = new MediBL().ingresarNuevoMedico(dni,nombre, apellido, fechaNac, direccion, telefono, email,especialidad,matricula);
             if (med != null){
